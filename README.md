@@ -8,7 +8,8 @@ to deploy it and secure it
 # Dockerfile
 
 Minimal nginx docker was chosen to host the static web page -- webservers hosting static content should be immutable  
-and modified only through a new docker revision
+and modified only through a new docker revision.  I copy the small html file, the SSL keys/cert and create SSL-default
+so that it will redirect http to https.
 
 # create_ssl.sh 
 
@@ -32,3 +33,10 @@ used the directory for the docker name, got tired of typing these commands into 
 file used by CircleCI to test  
 
 # Docker.yml and UFW-playbook.yml
+
+playbooks for creating docker on my AWS ec2 instance and for securing the ec2 host so that only port 22/80/443 are allowed to accept incoming connections.
+
+# Deploy.sh
+
+Script for running the above playbooks then starting the webserver when finished (i know I could have just added another ansible playbook, but its  
+been a long day and its a one liner.
