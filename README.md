@@ -1,7 +1,9 @@
 # WebserverChallenge
 
 Working on webserver challenge to automatically bring up a secure webserver in AWS and run some simple tests  
-against it.
+against it.  I was only able to get circleci to build and test the docker container due to some limitations   
+on its ability to run ansible scripts to deploy (or perhaps my ignorance).  I used my own ansible scripts  
+to deploy it and secure it 
 
 # Dockerfile
 
@@ -27,4 +29,6 @@ used the directory for the docker name, got tired of typing these commands into 
 
 # circle.yml 
 
-file used by CircleCI to test and then deploy on changes to Git source. 
+file used by CircleCI to test  
+
+# Docker.yml and UFW-playbook.yml
