@@ -28,18 +28,3 @@ used the directory for the docker name, got tired of typing these commands into 
 # circle.yml 
 
 file used by CircleCI to test and then deploy on changes to Git source. 
-
-
-machine:
-  services:
-    - docker
-
-dependencies:
-  override:
-    - docker info
-    - docker build -t howieh123/webserverchallenge .
-
-test:
-  override:
-    - docker run -d -p 80:80 -p 443:443 howieh123/webserverchallenge; sleep 10
-    - curl --retry 10 --retry-delay 5 -v http://localhost
