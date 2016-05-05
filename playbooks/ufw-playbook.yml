@@ -1,0 +1,37 @@
+---
+- hosts: tag_class_webserver
+  remote_user: ubuntu
+  sudo: yes
+
+  tasks:
+
+  - name: Install ufw package
+    apt: name={{ item }} state=present
+    tags: firewall
+    with_items:
+      - ufw
+  
+  - name: Add rule for ssh
+    ufw: rule=allow to_port=22 proto=tcp
+    tags: firewall
+
+  - name: Add rule for http
+    ufw: rule=allow to_port=80 proto=tcp
+    tags: firewall
+
+  - name: Add rule for https
+    ufw: rule=allow to_port=443 proto=tcp
+    tags: firewall
+
+  - name: Enable ufw on start
+    ufw: state=enabled
+    notify: restart ufw
+
+  - name: Set default policy
+    ufw: policy=deny direction=incoming
+    tags: firewall
+
+  handlers:
+
+  - name: restart ufw
+    service: name=ufw state=restarted
