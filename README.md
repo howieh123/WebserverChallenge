@@ -32,9 +32,10 @@ used the directory for the docker name, got tired of typing these commands into 
 
 file used by CircleCI to test  
 
-# Docker.yml and UFW-playbook.yml
+# docker-playbook.yml and ufw-playbook.yml
 
-playbooks for creating docker on my AWS ec2 instance and for securing the ec2 host so that only port 22/80/443 are allowed to accept incoming connections.
+playbooks for creating docker on my AWS ec2 instance and for securing the ec2 host so that only port 22/80/443 are allowed to accept incoming connections.  
+Ansible knows where to deploy because I tagged my webserver instance on AWS (tag_class_webserver).
 
 # Deploy.sh
 
